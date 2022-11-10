@@ -1,0 +1,26 @@
+
+# On host
+#https://www.digitalocean.com/community/tutorials/ how-to-configure-ntp-for-use-in-the-ntp-pool-project-on-ubuntu-16-04
+
+sudo apt-get install ntp
+sudo ufw allow 123/udp
+
+sudo nano /etc/ntp.conf
+
+sudo systemctl restart ntp.service
+
+
+# On pi  sync to host
+ntpdate -q 192.168.137.227
+
+# if using ntp just add host ip there
+
+# if using default timedatectl
+
+timedatectl timesync-status
+
+# add your local server to 
+sudo nano /etc/systemd/timesyncd.conf
+
+systemctl restart systemd-timesyncd.service 
+systemctl status systemd-timesyncd.service 
